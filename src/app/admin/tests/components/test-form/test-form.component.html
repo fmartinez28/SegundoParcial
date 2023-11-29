@@ -1,0 +1,36 @@
+<form [formGroup]="this.form" (ngSubmit)="this.editing ? this.edit() : this.create()">
+  <div class="mb-3 d-flex flex-column items-center justify-content-center">
+    <label for="name" class="lead p-2">Nombre del test <span class="text-danger">*</span></label>
+    <div class="p-2">
+      <input type="text" class="form-control" formControlName="name" name="name" id="name" placeholder="Test de Eficacia ...">
+      <p *ngIf="this.form.get('name')?.hasError('required') && this.form.get('name')?.touched" class="text-danger">El nombre es requerido.</p>
+    </div>
+  </div>
+  <div class="mb-3 d-flex flex-column items-center justify-content-center">
+    <label for="initials" class="lead p-2">Iniciales <span class="text-danger">*</span></label>
+    <div class="p-2">
+      <input type="text" class="form-control" formControlName="initials" name="initials" id="initials" placeholder="TECA">
+      <p *ngIf="this.form.get('initials')?.hasError('required') && this.form.get('initials')?.touched" class="text-danger">Las iniciales son requeridas.</p>
+    </div>
+  </div>
+  <div class="mb-3 d-flex flex-column items-center justify-content-center">
+    <label for="description" class="lead p-2">Descripción <span class="text-danger">*</span></label>
+    <div class="p-2">
+      <input type="text" class="form-control" formControlName="description" name="description" id="description" placeholder="Test enfocado en...">
+      <p *ngIf="this.form.get('description')?.hasError('required') && this.form.get('description')?.touched" class="text-danger">La descripción es requerida.</p>
+    </div>
+  </div>
+  <div *ngIf="this.editing" class="mb-3 d-flex flex-column items-center justify-content-center">
+    <label for="isActive" class="lead p-2">Habilitado <span class="text-danger">*</span></label>
+    <div class="p-2">
+      <select class="form-select form-select-lg" name="isActive" formControlName="isActive" id="isActive">
+        <option value="true">Sí</option>
+        <option value="false">No</option>
+      </select>
+      <p *ngIf="this.form.get('isActive')?.hasError('required') && this.form.get('isActive')?.touched" class="text-danger">Debe elegir una de las opciones</p>
+    </div>
+  </div>
+  <div class="mb-3 d-flex flex-column align-items-center justify-content-center">
+    <button type="submit" [disabled]="this.form.invalid" class="btn btn-primary rounded-1 px-4">{{this.editing ? 'Editar' : 'Crear'}}</button>
+  </div>
+</form>

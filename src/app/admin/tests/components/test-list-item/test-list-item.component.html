@@ -1,0 +1,12 @@
+<div [ngClass]="this.test.isActive ? 'border-success' : 'border-danger'" class="card shadow border text-center">
+  <div class="card-header">
+    <h4 class="card-title">{{this.test.initials}}</h4>
+    <h5 class="card-subtitle">{{this.test.name}}</h5>
+  </div>
+  <div class="card-body">
+    <p>{{this.test.description}}</p>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-warning" (click)="this.edit()">Editar</button>
+  </div>
+</div>
